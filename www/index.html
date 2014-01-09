@@ -41,10 +41,14 @@
     function capturePhoto() {
       console.log("premuto il tasto per scattare la foto");
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-        destinationType: Camera.DestinationType.FILE_URI });
+      navigator.camera.getPicture(onSuccessURL, onFail, { quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL, sourceType : Camera.PictureSourceType.CAMERA,
+		  encodingType: Camera.EncodingType.JPEG });
     }
 
+	function onSuccessURL(imageData){
+		console.log("data base 64: "+ imageData);
+	}
     // Called if something bad happens.
     //
     function onFail(message) {
