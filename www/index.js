@@ -21,6 +21,8 @@ app.toBase64 = function(){
 
 app.onDeviceReady = function (){
 	console.log("API phonegap pronte");
+	$("#scatta").bind("click", app.scattaFoto);
+	$("#converti").bind("click", app.toBase64);
 };
 app.start = function(){
 	document.addEventListener('deviceready', app.onDeviceReady, false);
