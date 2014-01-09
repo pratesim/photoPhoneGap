@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Prova photo</title>
+		<script src="index.js" type="text/javascript"></script>
+		<script src="phonegap.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div>
+			Questa app prova a salvare l'immagine scattata localmente, e a convertirla poi in base64.
+		</div>
+		<div>
+			<button onclick="myapp.scattaFoto">Scatta Foto</button>
+			<button onclick="myapp.toBase64">Ottieni Base64 dell'immagine locale</button>
+		</div>
+		<div>
+			<img id="myImage" alt="Qui ci verrà la foto scattata">
+		</div>
+		<script>
+			app.start();
+		</script>
+	</body>
+</html>
