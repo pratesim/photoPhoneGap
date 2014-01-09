@@ -10,6 +10,7 @@ app.onFail = function(message) {
 };
 
 app.scattaFoto = function (){
+	console.log("chiamata la funzione scatta foto");
 	navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
     destinationType: Camera.DestinationType.FILE_URI });
 };
