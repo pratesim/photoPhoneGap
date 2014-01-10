@@ -147,7 +147,7 @@
 	          		var n = d.getTime();
 	          		//new file name
 	          		var newFileName = n + ".jpeg";
-					fileSystem.root.getFile(parent.fullPath+"\newFileName", {create: true}, function(fileEntry){
+					fileSystem.root.getFile(newFileName, {create: true}, function(fileEntry){
 						console.log("creato file per contenere foto: " + fileEntry.name);
 						
 		          		fileEntry.createWriter(function (writer){
