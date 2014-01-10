@@ -143,12 +143,13 @@
 		      		// funzione chiamata in caso sia stato possibile creare la directory
 					// salvo l'immagine in questa dir
 					console.log("Directory aperta/creata");
-					window.resolveLocalFileSystemURI("file:///example.txt", function(fileEntry){
+					var d = new Date();
+	          		var n = d.getTime();
+	          		//new file name
+	          		var newFileName = n + ".jpeg";
+					fileSystem.root.getFile(parent.fullPath+"\newFileName", {create: true}, function(fileEntry){
 						console.log("creato file per contenere foto: " + fileEntry.name);
-						var d = new Date();
-		          		var n = d.getTime();
-		          		//new file name
-		          		var newFileName = n + ".jpeg";
+						
 		          		fileEntry.createWriter(function (writer){
 		          			writer.onwrite = function (evt){
 						      largeImage.style.display = 'block';
