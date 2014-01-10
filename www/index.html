@@ -147,6 +147,7 @@
 	          		var n = d.getTime();
 	          		//new file name
 	          		var newFileName = n + ".jpeg";
+	          		/* crea un file con nome newFileName */
 					fileSystem.root.getFile(newFileName, {create: true}, function(fileEntry){
 						console.log("creato file per contenere foto: " + fileEntry.name);
 						
@@ -159,7 +160,7 @@
 						      //
 						      largeImage.src = writer.fileName;
 		          			};
-		          			writer.write(imageData);
+		          			writer.write(str2ab(imageData));
 		          		}, onWriterError);
 						fileEntry.moveTo(parent, newFileName, function(newFileEntry){
 							console.log("file salvato con nome: " + newFileEntry.name);
@@ -170,6 +171,15 @@
 			}
 		});
 	}
+	
+	function str2ab(str) {
+	  var buf = new ArrayBuffer(str.length*2); // 2 bytes for each char
+	  var bufView = new Uint16Array(buf);
+	  for (var i=0, strLen=str.length; i<strLen; i++) {
+	    bufView[i] = str.charCodeAt(i);
+	  }
+	  return buf;
+    }
     </script>
   </head>
   <body>
