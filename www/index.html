@@ -58,8 +58,39 @@
       // The inline CSS rules are used to resize the image
       //
       largeImage.src = imageURI;
+      
+      //provo a salvare l'immagine in una cartella sul file system
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem){
+      	// funzione chiamata in caso sia stato ottenuto un filesystem con successo
+		// creo una directory (se non esiste già) nella quale salvare l'immagine scattata dalla fotocamera
+      	fileSystem.root.getDirectory("PhoneGap Example", {create: true}, function(parent){
+      		// funzione chiamata in caso sia stato possibile creare la directory
+			// salvo l'immagine in questa dir
+			window.resolveLocalFileSystemURI(imageURI, function(fileEntry){
+				fileEntry.moveTo(parent, function(newFileEntry){
+					console.log("file salvato con nome: " + newFileEntry.name);
+				}, onMoveFileError);
+			}, onResolveError);
+      	}, onGetDirectoryFail);
+      }, onFileSystemError);
     }
 
+	function onMoveFileError(error){
+    	console.log("impossibile salvare il file: " + error.code);
+	}
+	function onResolveError(evt){
+		console.log("impossibile aprire il file: " + evt.target.error.code);
+	}
+	// funzione chiamata in caso non sia possibili ottenere un filesystem
+	function onFileSystemError(evt){
+		console.log(evt.target.error.code);
+	}
+	
+	
+	// funzione chiamata in caso non sia possibile creare una directory
+	function onGetDirectoryFail(error){
+		console.log("impossibile aprire/creare directory: " + error.code);
+	}
     // A button will call this function
     //
     function capturePhoto() {
