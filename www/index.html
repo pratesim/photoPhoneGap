@@ -63,11 +63,18 @@
       window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function (fileSystem){
       	// funzione chiamata in caso sia stato ottenuto un filesystem con successo
 		// creo una directory (se non esiste già) nella quale salvare l'immagine scattata dalla fotocamera
+		console.log("FileSystem ottenuto. Nome fileSystem: " + fileSystem.name);
       	fileSystem.root.getDirectory("PhoneGap Example", {create: true}, function(parent){
       		// funzione chiamata in caso sia stato possibile creare la directory
 			// salvo l'immagine in questa dir
+			console.log("Directory aperta/creata");
 			window.resolveLocalFileSystemURI(imageURI, function(fileEntry){
-				fileEntry.moveTo(parent, function(newFileEntry){
+				console.log("File scattato dalla fotocamera aperto: " + fileEntry.name);
+				var d = new Date();
+          		var n = d.getTime();
+          		//new file name
+          		var newFileName = n + ".jpg";
+				fileEntry.moveTo(parent, newFileName, function(newFileEntry){
 					console.log("file salvato con nome: " + newFileEntry.name);
 				}, onMoveFileError);
 			}, onResolveError);
