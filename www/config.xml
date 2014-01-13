@@ -20,8 +20,8 @@
         Hardeep Shoker 
     </author>
     
-	<gap:plugin name="Camera" value="org.apache.cordova.Camera"/>
-	<gap:plugin name="File" value="org.apache.cordova.File"/>
+	<gap:plugin name="org.apache.cordova.camera" version="0.2.3" />
+	<gap:plugin name="org.apache.cordova.file" version="0.2.3" />
     <!--<feature name="http://api.phonegap.com/1.0/camera"/>
     <feature name="http://api.phonegap.com/1.0/file"/>-->
     <access origin="*"/>
