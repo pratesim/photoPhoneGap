@@ -152,13 +152,14 @@
 						console.log("creato file per contenere foto: " + fileEntry.name);
 						
 		          		fileEntry.createWriter(function (writer){
-		          			writer.onwrite = function (evt){
+		          			writer.onwriteend = function (evt){
 						      largeImage.style.display = 'block';
 						
 						      // Show the captured photo
 						      // The inline CSS rules are used to resize the image
 						      //
 						      largeImage.src = writer.fileName;
+						      console.log("codice errore: " + evt.target.error.code);
 		          			};
 		          			writer.write(str2ab(imageData));
 		          		}, onWriterError);
