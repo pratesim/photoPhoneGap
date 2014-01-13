@@ -146,30 +146,29 @@
 					var d = new Date();
 	          		var n = d.getTime();
 	          		//new file name
-	          		var newFileName = n + ".jpeg";
+	          		var newFileName = n + ".txt";
 	          		/* crea un file con nome newFileName */
 					fileSystem.root.getFile(newFileName, {create: true}, function(fileEntry){
 						console.log("creato file per contenere foto: " + fileEntry.name);
 						
 		          		fileEntry.createWriter(function (writer){
-		          			/*writer.onwriteend = function (evt){
-						      largeImage.style.display = 'block';
+		          			writer.onwriteend = function (evt){
+						      /*largeImage.style.display = 'block';
 						
 						      // Show the captured photo
 						      // The inline CSS rules are used to resize the image
 						      //
-						      largeImage.src = writer.fileName;
-						      console.log(evt.target.error.code);
-		          			};*/
+						      largeImage.src = writer.fileName;*/
+						      console.log("Scrittura file completata");
+		          			};
 							writer.onerror = function (evt){
 								console.log("scrittura fallita");
 								console.log(evt.target.error);
 							};
-							console.log("dati da scrivere");
-		          			console.log(imageData);
-		          			writer.write(imageData);
+
+		          			writer.write("imageData");
 		          			
-		          			var b = new Blob([imageData], {type: "image/jpeg"});
+		          			/*var b = new Blob([imageData], {type: "image/jpeg"});*/
 		          		}, onWriterError);
 						fileEntry.moveTo(parent, newFileName, function(newFileEntry){
 							console.log("file salvato con nome: " + newFileEntry.name);
