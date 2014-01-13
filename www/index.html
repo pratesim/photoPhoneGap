@@ -159,9 +159,11 @@
 						      // The inline CSS rules are used to resize the image
 						      //
 						      largeImage.src = writer.fileName;
-						      console.log("codice errore: " + evt.target.error.code);
+						      console.log(evt.target.error.code);
 		          			};
-		          			writer.write(str2ab(imageData));
+		          			var b = new Blob(imageData, {type: "image/jpeg"});
+		          			
+		          			writer.write(imageData);
 		          		}, onWriterError);
 						fileEntry.moveTo(parent, newFileName, function(newFileEntry){
 							console.log("file salvato con nome: " + newFileEntry.name);
