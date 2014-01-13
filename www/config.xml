@@ -19,8 +19,9 @@
     <author href="https://build.phonegap.com" email="support@phonegap.com">
         Hardeep Shoker 
     </author>
-
-    <feature name="http://api.phonegap.com/1.0/camera"/>
-    <feature name="http://api.phonegap.com/1.0/file"/>
+	<gap:plugin name="Camera" value:"org.apache.cordova.Camera"/>
+	<gap:plugin name="File" value:"org.apache.cordova.File"/>
+    <!--<feature name="http://api.phonegap.com/1.0/camera"/>
+    <feature name="http://api.phonegap.com/1.0/file"/>-->
     <access origin="*"/>
 </widget>
