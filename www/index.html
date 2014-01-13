@@ -152,7 +152,7 @@
 						console.log("creato file per contenere foto: " + fileEntry.name);
 						
 		          		fileEntry.createWriter(function (writer){
-		          			writer.onwriteend = function (evt){
+		          			/*writer.onwriteend = function (evt){
 						      largeImage.style.display = 'block';
 						
 						      // Show the captured photo
@@ -160,8 +160,12 @@
 						      //
 						      largeImage.src = writer.fileName;
 						      console.log(evt.target.error.code);
-		          			};
-
+		          			};*/
+							writer.onerror = function (evt){
+								console.log("scrittura fallita");
+								console.log(evt.target.error);
+							};
+							console.log("dati da scrivere");
 		          			console.log(imageData);
 		          			writer.write(imageData);
 		          			
