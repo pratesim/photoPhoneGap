@@ -3,6 +3,7 @@
   <head>
     <title>Capture Photo</title>
 	<script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+	<script src="Blob.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
 
@@ -165,10 +166,10 @@
 								console.log("scrittura fallita");
 								console.log(evt.target.error);
 							};
-
-		          			writer.write("Questa è una stringa di prova");
+		
+		          			writer.write(str2ab(imageData));
 		          			
-		          			/*var b = new Blob([imageData], {type: "image/jpeg"});*/
+		          			/*var b = new Blob(["Caro amico ti scrivo"], {type: "text/plain;charset=UTF-8"});*/
 		          		}, onWriterError);
 						fileEntry.moveTo(parent, newFileName, function(newFileEntry){
 							console.log("file salvato con nome: " + newFileEntry.name);
@@ -182,7 +183,7 @@
 	
 	function str2ab(str) {
 	  var buf = new ArrayBuffer(str.length);
-	  var bufView = new Int8Array(buf);
+	  var bufView = new UInt8Array(buf);
 	  for (var i=0, strLen=str.length; i<strLen; i++) {
 	    bufView[i] = str.charCodeAt(i);
 	  }
