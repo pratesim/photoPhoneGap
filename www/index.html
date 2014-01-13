@@ -161,9 +161,11 @@
 						      largeImage.src = writer.fileName;
 						      console.log(evt.target.error.code);
 		          			};
-		          			var b = new Blob(imageData, {type: "image/jpeg"});
-		          			
+
+		          			console.log(imageData);
 		          			writer.write(imageData);
+		          			
+		          			var b = new Blob([imageData], {type: "image/jpeg"});
 		          		}, onWriterError);
 						fileEntry.moveTo(parent, newFileName, function(newFileEntry){
 							console.log("file salvato con nome: " + newFileEntry.name);
